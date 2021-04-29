@@ -1,0 +1,20 @@
+{
+    "name": "lazyts",
+    "version": "0.0.1",
+    "description": "init ts project for lazy people",
+    "main": "dist/index.js",
+    "repository": "https://github.com/dheerajpv/lazyts",
+    "author": "Dheeraj Prakash <dheerajpv16@gmail.com>",
+    "license": "MIT",
+    "bin": "dist/index.js",
+    "scripts": {
+        "build": "tsc"
+    },
+    "dependencies": {
+        "chalk": "^4.1.1",
+        "commander": "^7.2.0"
+    },
+    "devDependencies": {
+        "@types/node": "^15.0.1"
+    }
+}
