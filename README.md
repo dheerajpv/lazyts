@@ -12,9 +12,11 @@ npx lazyts <subcommand> [args] [options]
 
 ### Subcommands
 
-| name | arguments                | description                                               |
-| ---- | ------------------------ | --------------------------------------------------------- |
-| init | &lt;name&gt; [framework] | Creates a project in the given framework. Default: 'node' |
+| name  | arguments                | description                                                                            |
+| ----- | ------------------------ | -------------------------------------------------------------------------------------- |
+| init  | &lt;name&gt; [framework] | Creates a project in the given framework. Default: 'node'                              |
+| setup | ---                      | Sets up running TS by installing NPM packages. May require admin/root on some systems. |
+| list  | ---                      | Lists all framework options possible to use in `init`.                                 |
 
 _Note:_ arguments in &lt;carets&gt; are required and ones in [brackets] are optional.
 
@@ -26,7 +28,6 @@ More commands will come soon!
 | ----- | --------- | ------------------------------------------------------- |
 | -V    | --version | Prints the program version and exits                    |
 | -h    | --help    | Prints help text (less stylized version of this README) |
-| -l    | --list    | Lists all the [supported frameworks](#Frameworks)       |
 
 ## Frameworks
 

@@ -17,20 +17,6 @@ program
         `lazyts v${version}\n\nlazyts is a command for lazy people to create TS projects.`
     );
 
-program.option("-l --list", "list all framework options").action(async () => {
-    const { list } = program.opts();
-    if (list) {
-        console.log("Available Framweworks:");
-        (await fs.readdir(path.join(__dirname, "../frameworks"))).forEach(
-            (f) => {
-                console.log(`    ${f}`);
-            }
-        );
-    } else {
-        console.log(program.help());
-    }
-});
-
 program
     .command("init <name> [framework]")
     .description("Initialize a TS project. Defaults framework to 'node'")
@@ -76,6 +62,49 @@ program
                 process.exit(4);
             }
         });
+    });
+
+program
+    .command("setup")
+    .description(
+        "setup TypeScript by installing NPM packages, may require admin/root on some cases"
+    )
+    .action(async () => {
+        log.info("installing required NPM packages...");
+
+        const child = cp.exec(
+            "npm i -g typescript nodemon ts-node @types/node tsconfig.json"
+        );
+
+        child.stdout?.on("data", (data) => {
+            console.log(data.toString());
+        });
+
+        child.stderr?.on("data", (data) => {
+            console.error(data);
+        });
+
+        child.on("close", (code) => {
+            if (code === 0) {
+                log.success("successfully installed packages");
+            } else {
+                log.error("error installing packages");
+                log.error("see NPM's error message above");
+                process.exit(1);
+            }
+        });
+    });
+
+program
+    .command("list")
+    .description("List all framwework options for init")
+    .action(async () => {
+        console.log("Available Framweworks:");
+        (await fs.readdir(path.join(__dirname, "../frameworks"))).forEach(
+            (f) => {
+                console.log(`    ${f}`);
+            }
+        );
     });
 
 program.parse(process.argv);
