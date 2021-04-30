@@ -1,6 +1,6 @@
 {
     "name": "lazyts",
-    "version": "0.2.0",
+    "version": "0.2.1",
     "description": "init ts project for lazy people",
     "main": "dist/index.js",
     "repository": "https://github.com/dheerajpv/lazyts",
